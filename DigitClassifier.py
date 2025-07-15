@@ -28,7 +28,7 @@ X_test = X_test[:100]
 y_test = y_test[:100]
 
 
-# --- Helper Functions ---
+
 def relu(x): return np.maximum(0, x)
 def softmax(z):
     exp_z = np.exp(z - np.max(z, axis=0, keepdims=True))
@@ -53,7 +53,7 @@ def max_pooling_backward(dout, feature_maps, pool_size=2, stride=2):
                 dx[f, i + max_idx[0], j + max_idx[1]] += dout[f, i//stride, j//stride]
     return dx
 
-# --- Initialize parameters ---
+
 np.random.seed(42)
 filters1 = np.random.randn(16, 3, 3) * 0.1
 biases1 = np.zeros(16)
@@ -66,7 +66,7 @@ b2 = np.zeros((10, 1))
 lr = 0.01
 epochs = 2
 
-# --- Training loop ---
+#Training loop
 for epoch in range(epochs):
     loss_epoch = 0
     for idx in range(len(X_train)):
@@ -151,7 +151,7 @@ for epoch in range(epochs):
 
 
 
-# --- Evaluate on test set ---
+#Evaluate on test set rq
 correct = 0
 for idx in range(len(X_test)):
     image = X_test[idx]
